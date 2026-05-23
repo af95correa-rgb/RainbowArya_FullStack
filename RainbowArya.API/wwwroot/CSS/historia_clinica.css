@@ -1,0 +1,1241 @@
+/* --- historia_clinica.css: Estilos específicos para el Módulo de Historia Clínica --- */
+
+/* ==========================================
+   1. LAYOUT PRINCIPAL (GRID)
+   ========================================== */
+.historia-layout {
+    display: grid;
+    grid-template-columns: 400px 1fr; 
+    gap: 30px; 
+    align-items: start; 
+    margin-top: 20px;
+}
+
+/* ==========================================
+   2. ESTILOS PARA CLASES AUXILIARES
+   ========================================== */
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+}
+
+.intro-text {
+    margin-bottom: 30px;
+    color: #555;
+}
+
+.section-title {
+    border-bottom: 2px solid var(--arya-blue);
+    font-size: 1.3em;
+    margin-top: 30px;
+    padding-bottom: 10px;
+}
+
+.section-description {
+    color: #777;
+    margin-bottom: 15px;
+    font-size: 0.95em;
+}
+
+.btn-full-width {
+    width: 100%;
+    background-color: var(--arya-blue) !important;
+}
+
+/* ==========================================
+   3. ESTILO AVANZADO DEL SELECT
+   ========================================== */
+.form-container-card select, 
+.form-container-card .custom-select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    /* Ícono personalizado para select, color ajustado a var(--arya-accent) si existiera, o un color similar al morado (#8e44ad) */
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="%238e44ad" d="M7 10l5 5 5-5z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 15px center; 
+    padding-right: 40px; 
+    cursor: pointer;
+}
+
+/* ==========================================
+   4. AJUSTE DE TARJETAS DENTRO DEL LAYOUT
+   ========================================== */
+.form-container-card {
+    padding: 25px;
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: var(--shadow-lift); 
+    border-top: 5px solid var(--arya-accent); 
+    position: sticky; 
+    top: 100px; 
+}
+
+.form-container-card h2 {
+    border-bottom: 2px solid var(--arya-accent);
+    font-size: 1.5em;
+    margin-top: 0;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.history-display-card {
+    padding: 25px;
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: var(--shadow-subtle);
+    border-top: 5px solid var(--arya-primary); 
+}
+
+.history-display-card h2 {
+    font-size: 1.5em;
+    margin-top: 0;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--arya-primary);
+}
+
+/* ==========================================
+   5. ESTILOS DE CONTENIDO DEL HISTORIAL
+   ========================================= */
+.data-view-container {
+    padding-top: 15px;
+}
+
+#records-history-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.record-card {
+    background-color: var(--arya-light);
+    padding: 15px;
+    border-radius: 8px;
+    border-left: 4px solid var(--arya-secondary);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.record-card h4 {
+    color: var(--arya-dark);
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px dashed #ddd;
+}
+
+.record-card strong {
+    font-weight: 600;
+}
+
+.record-card .vitals {
+    display: flex;
+    gap: 15px;
+    margin: 10px 0;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 6px;
+    border: 1px solid #eee;
+}
+
+.empty-state {
+    padding: 40px 20px;
+    text-align: center;
+    color: #777;
+    border: 2px dashed #ccc;
+    border-radius: 12px;
+    background-color: rgba(142, 68, 173, 0.02);
+}
+
+.empty-state i {
+    font-size: 3em;
+    color: var(--arya-blue);
+    margin-bottom: 15px;
+    display: block;
+}
+
+.empty-state p {
+    font-size: 1.05em;
+    margin: 0;
+}
+
+/* ==========================================
+   6. BOTONES DEL MODAL – AJUSTE MEJORADO
+   ========================================== */
+.button-group.modal-buttons {
+    display: flex;
+    justify-content: flex-end; 
+    gap: 15px; 
+    margin-top: 30px;
+    margin-bottom: 0;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+}
+
+.button-group.modal-buttons button {
+    flex: 1;           /* Ocupa el mismo espacio dentro del grupo */
+    min-width: 160px;  /* Más ancho para no verse estrechos */
+    max-width: 220px;  /* Limita crecimiento excesivo en pantallas grandes */
+    padding: 12px 20px; /* Más cómodo visualmente */
+    font-weight: 600;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+/* Hover y focus más visibles */
+.button-group.modal-buttons button:hover,
+.button-group.modal-buttons button:focus {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Responsive: mantener ancho adecuado en móviles */
+@media (max-width: 600px) {
+    .button-group.modal-buttons {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .button-group.modal-buttons button {
+        flex: 1;
+        min-width: auto;
+    }
+}
+/* ==========================================
+   7. ESTILOS DEL MODAL
+   ========================================== */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.modal-content {
+    background-color: #fff;
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 35px;
+    position: relative;
+    animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.modal-custom-size {
+    width: 100%;
+    max-width: 650px;
+}
+
+.modal-content h2 {
+    color: var(--arya-dark);
+    border-bottom: 3px solid var(--arya-blue);
+    padding-bottom: 15px;
+    margin-top: 0;
+    margin-bottom: 25px;
+    font-size: 1.6em;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.modal-content h2 i {
+    color: var(--arya-blue);
+}
+
+/* Scrollbar personalizado para el modal */
+.modal-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+    background: var(--arya-accent);
+    border-radius: 10px;
+}
+
+.modal-content::-webkit-scrollbar-thumb:hover {
+    background: var(--arya-primary);
+}
+
+/* ==========================================
+   8. GRIDS DEL FORMULARIO EN EL MODAL
+   ========================================== */
+.form-grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.form-grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--arya-dark);
+    font-size: 0.95em;
+}
+
+.form-group input,
+.form-group select {
+    padding: 12px 15px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 1em;
+    transition: all 0.3s ease;
+    background-color: #fff;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--arya-blue);
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+.form-group input::placeholder {
+    color: #999;
+    font-style: italic;
+}
+
+/* Select personalizado en modal */
+.modal-content select.custom-select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="%233498db" d="M7 10l5 5 5-5z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    padding-right: 40px;
+    cursor: pointer;
+}
+
+/* ==========================================
+   9. RESPONSIVE DESIGN
+   ========================================== */
+
+/* Tablets y pantallas medianas */
+@media (max-width: 1000px) {
+    .historia-layout {
+        grid-template-columns: 1fr;
+    }
+    
+    .form-container-card {
+        position: static;
+        top: auto;
+    }
+}
+
+/* Móviles */
+@media (max-width: 600px) {
+    .modal-custom-size {
+        max-width: 95%;
+        padding: 20px;
+    }
+
+    .modal-content {
+        padding: 25px;
+    }
+
+    .modal-content h2 {
+        font-size: 1.3em;
+    }
+
+    .form-grid-2, 
+    .form-grid-3 {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .record-card .vitals {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    /* Botones de la búsqueda: Pasan a columna */
+    .button-group:not(.modal-buttons) {
+        flex-direction: column;
+    }
+
+    .button-group:not(.modal-buttons) button {
+        width: 100%;
+    }
+
+    /* Botones del Modal: Se mantienen en fila pero ocupan todo el ancho */
+    .button-group.modal-buttons {
+        flex-direction: row;
+        justify-content: space-between; /* Rellena el espacio */
+    }
+
+    .button-group.modal-buttons button {
+        flex: 1;
+        min-width: auto;
+    }
+}
+
+@media (max-width: 400px) {
+    .modal-content {
+        padding: 20px;
+    }
+
+    .form-group input,
+    .form-group select {
+        padding: 10px 12px;
+        font-size: 0.95em;
+    }
+}
+
+
+/* ==========================================
+   10. ESTILOS MEJORADOS PARA EL FORMULARIO MODAL
+   ========================================== */
+
+/* Secciones del formulario */
+.form-section {
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: #f9f9fc;
+    border-radius: 12px;
+    border: 1px solid #e9ecef;
+}
+
+.form-section-title {
+    font-size: 1.2em;
+    color: var(--arya-dark);
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--arya-blue);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.form-section-title i {
+    color: var(--arya-blue);
+    font-size: 1.2em;
+}
+
+/* Grid para filas del formulario */
+.form-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.form-group.full-width {
+    grid-column: 1 / -1;
+}
+
+/* Campos requeridos */
+.required {
+    color: #dc3545;
+    margin-left: 4px;
+}
+
+/* Texto de ayuda */
+.form-hint {
+    display: block;
+    font-size: 11px;
+    color: #6c757d;
+    margin-top: 5px;
+    font-style: italic;
+}
+
+/* Mejoras para inputs y selects */
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    background-color: #fff;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--arya-blue);
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+.form-group input:hover,
+.form-group select:hover,
+.form-group textarea:hover {
+    border-color: #bdc3c7;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #2c3e50;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Textarea específico */
+.form-group textarea {
+    resize: vertical;
+    min-height: 80px;
+    font-family: inherit;
+}
+
+/* Mejora del select personalizado */
+.form-group select.custom-select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="%233498db" d="M7 10l5 5 5-5z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    padding-right: 40px;
+    cursor: pointer;
+}
+
+/* Placeholder styling */
+.form-group input::placeholder,
+.form-group select::placeholder,
+.form-group textarea::placeholder {
+    color: #adb5bd;
+    font-size: 13px;
+}
+
+/* ==========================================
+   11. MEJORAS PARA EL MODAL EN GENERAL
+   ========================================== */
+
+.modal-content {
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+}
+
+.modal-content h2 {
+    background: linear-gradient(135deg, var(--arya-dark) 0%, var(--arya-primary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 25px;
+}
+
+/* Animación de campos */
+.form-group input,
+.form-group select,
+.form-group textarea {
+    transition: all 0.2s ease;
+}
+
+/* Efecto de carga en botones */
+.button.primary:disabled,
+.button.secondary:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* ==========================================
+   12. RESPONSIVE PARA EL MODAL
+   ========================================== */
+
+@media (max-width: 768px) {
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .form-section {
+        padding: 15px;
+    }
+    
+    .modal-content {
+        padding: 20px;
+    }
+    
+    .form-section-title {
+        font-size: 1.1em;
+    }
+}
+
+@media (max-width: 480px) {
+    .form-section {
+        padding: 12px;
+    }
+    
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        padding: 10px 12px;
+        font-size: 13px;
+    }
+    
+    .form-group label {
+        font-size: 12px;
+    }
+}
+
+/* Efecto de vibración para campos inválidos */
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-5px);
+    }
+
+    75% {
+        transform: translateX(5px);
+    }
+}
+
+.form-group input:invalid:focus {
+    border-color: #dc3545;
+    animation: shake 0.3s ease-in-out;
+}
+
+/* Mejora visual para el modal del historial */
+#historial-modal-backdrop .form-group textarea {
+    font-family: inherit;
+    resize: vertical;
+}
+
+/* Estilo para mensajes de éxito/error dentro del modal */
+.modal-toast {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 10000;
+}
+
+/* ==========================================
+   13. ESTILOS MEJORADOS PARA BÚSQUEDA
+   ========================================== */
+
+/* Tarjeta del formulario de búsqueda */
+.form-container-card {
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    border-radius: 16px;
+    padding: 25px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+    .form-container-card:hover {
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    }
+
+/* Grupos de campos de búsqueda */
+.search-field-group {
+    margin-bottom: 25px;
+}
+
+    .search-field-group label {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-weight: 600;
+        color: #2c3e50;
+        margin-bottom: 10px;
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+        .search-field-group label i {
+            color: var(--arya-blue);
+            font-size: 16px;
+        }
+
+/* Wrapper para input con ícono */
+.search-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+    .search-input-wrapper input {
+        width: 100%;
+        padding: 12px 45px 12px 15px;
+        border: 2px solid #e0e0e0;
+        border-radius: 12px;
+        font-size: 15px;
+        transition: all 0.3s ease;
+        background-color: #fff;
+        font-family: inherit;
+    }
+
+        .search-input-wrapper input:focus {
+            outline: none;
+            border-color: var(--arya-blue);
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+        }
+
+        .search-input-wrapper input:hover {
+            border-color: #bdc3c7;
+        }
+
+        .search-input-wrapper input::placeholder {
+            color: #adb5bd;
+            font-size: 14px;
+        }
+
+.search-icon {
+    position: absolute;
+    right: 15px;
+    color: #adb5bd;
+    font-size: 18px;
+    pointer-events: none;
+    transition: color 0.3s ease;
+}
+
+.search-input-wrapper input:focus + .search-icon {
+    color: var(--arya-blue);
+}
+
+/* Campo de ayuda */
+.field-hint {
+    display: block;
+    font-size: 11px;
+    color: #6c757d;
+    margin-top: 6px;
+    margin-left: 5px;
+    font-style: italic;
+}
+
+/* Separador "o" */
+.search-divider {
+    text-align: center;
+    margin: 20px 0;
+    position: relative;
+}
+
+    .search-divider::before,
+    .search-divider::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        width: calc(50% - 30px);
+        height: 1px;
+        background: linear-gradient(90deg, transparent, #ddd, transparent);
+    }
+
+    .search-divider::before {
+        left: 0;
+    }
+
+    .search-divider::after {
+        right: 0;
+    }
+
+    .search-divider span {
+        background: #f8f9fa;
+        padding: 0 15px;
+        color: #95a5a6;
+        font-weight: 600;
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+/* Botones de acción */
+.search-actions {
+    display: flex;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.btn-primary {
+    flex: 2;
+    background: linear-gradient(135deg, var(--arya-blue) 0%, #2471a3 100%);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+    .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+    }
+
+    .btn-primary:active {
+        transform: translateY(0);
+    }
+
+.btn-outline {
+    flex: 1;
+    background: transparent;
+    color: #7f8c8d;
+    border: 2px solid #e0e0e0;
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+    .btn-outline:hover {
+        background: #f8f9fa;
+        border-color: #bdc3c7;
+        color: #2c3e50;
+    }
+
+/* Sección nuevo paciente */
+.new-patient-section {
+    margin-top: 35px;
+    padding-top: 25px;
+    border-top: 1px solid #e9ecef;
+}
+
+.divider-with-text {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+    .divider-with-text span {
+        background: #f8f9fa;
+        padding: 0 15px;
+        color: #95a5a6;
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        position: relative;
+        display: inline-block;
+    }
+
+        .divider-with-text span::before,
+        .divider-with-text span::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 40px;
+            height: 1px;
+            background: #e0e0e0;
+        }
+
+        .divider-with-text span::before {
+            right: 100%;
+            margin-right: 15px;
+        }
+
+        .divider-with-text span::after {
+            left: 100%;
+            margin-left: 15px;
+        }
+
+/* Tarjeta de nuevo paciente */
+.new-patient-card {
+    background: linear-gradient(135deg, #fff5e6 0%, #ffe8d6 100%);
+    border-radius: 16px;
+    padding: 25px 20px;
+    text-align: center;
+    border: 1px solid #ffe0b5;
+    transition: all 0.3s ease;
+}
+
+    .new-patient-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+
+.new-patient-icon {
+    font-size: 48px;
+    color: #f39c12;
+    margin-bottom: 15px;
+    display: inline-block;
+}
+
+.new-patient-card h3 {
+    font-size: 18px;
+    color: #e67e22;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.new-patient-card p {
+    font-size: 13px;
+    color: #7f8c8d;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.btn-secondary {
+    background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    justify-content: center;
+}
+
+    .btn-secondary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(243, 156, 18, 0.3);
+    }
+
+    .btn-secondary:active {
+        transform: translateY(0);
+    }
+
+/* ==========================================
+   14. RESULTADOS DE BÚSQUEDA MEJORADOS
+   ========================================== */
+
+/* Cards de resultados de búsqueda */
+.pet-result-card {
+    background: white;
+    border: 1px solid #e9ecef;
+    border-radius: 12px;
+    padding: 15px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+    .pet-result-card:hover {
+        background: #f8f9fa;
+        border-color: var(--arya-blue);
+        transform: translateX(5px);
+    }
+
+.pet-result-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.pet-result-name {
+    font-weight: 700;
+    color: #2c3e50;
+    font-size: 16px;
+}
+
+    .pet-result-name i {
+        color: var(--arya-blue);
+        margin-right: 8px;
+    }
+
+.pet-result-details {
+    font-size: 12px;
+    color: #7f8c8d;
+}
+
+    .pet-result-details i {
+        margin-right: 4px;
+    }
+
+.pet-result-badge {
+    background: #ecf0f1;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+/* Animación de carga */
+.search-loading {
+    text-align: center;
+    padding: 40px;
+    background: #f8f9fa;
+    border-radius: 12px;
+}
+
+    .search-loading i {
+        font-size: 32px;
+        color: var(--arya-blue);
+        margin-bottom: 10px;
+    }
+
+/* ==========================================
+   15. RESPONSIVE PARA BÚSQUEDA
+   ========================================== */
+
+@media (max-width: 768px) {
+    .form-container-card {
+        padding: 20px;
+    }
+
+    .search-actions {
+        flex-direction: column;
+    }
+
+    .btn-primary,
+    .btn-outline {
+        width: 100%;
+    }
+
+    .new-patient-card {
+        padding: 20px 15px;
+    }
+
+    .new-patient-icon {
+        font-size: 36px;
+    }
+
+    .search-input-wrapper input {
+        padding: 10px 40px 10px 12px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .form-container-card {
+        padding: 15px;
+    }
+
+    .search-field-group label {
+        font-size: 12px;
+    }
+
+    .field-hint {
+        font-size: 10px;
+    }
+
+    .btn-primary,
+    .btn-outline,
+    .btn-secondary {
+        padding: 10px 16px;
+        font-size: 13px;
+    }
+}
+
+/* ==========================================
+   16. ESTILOS PARA RESULTADOS DE PROPIETARIOS
+   ========================================== */
+
+.owner-results-container,
+.pets-container {
+    margin-top: 20px;
+    border-radius: 12px;
+    overflow: hidden;
+    animation: fadeIn 0.3s ease;
+}
+
+.results-header {
+    background: linear-gradient(135deg, var(--arya-primary) 0%, #6c3483 100%);
+    color: white;
+    padding: 10px 15px;
+    font-weight: 600;
+    font-size: 0.9em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.owners-list-results,
+.pets-list {
+    max-height: 300px;
+    overflow-y: auto;
+    border: 1px solid #e0e0e0;
+    border-top: none;
+    border-radius: 0 0 12px 12px;
+    background: white;
+}
+
+.owner-result-card {
+    padding: 15px;
+    border-bottom: 1px solid #f0f0f0;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+    .owner-result-card:hover {
+        background: #f8f9fa;
+        transform: translateX(5px);
+    }
+
+.owner-result-info {
+    flex: 1;
+}
+
+.owner-result-name {
+    font-weight: 700;
+    color: #2c3e50;
+    font-size: 1em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 5px;
+}
+
+    .owner-result-name i {
+        color: var(--arya-primary);
+    }
+
+.owner-result-details {
+    font-size: 0.85em;
+    color: #6c757d;
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.owner-result-badge {
+    background: var(--arya-blue);
+    color: white;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.75em;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+/* Tarjeta de mascota */
+.pet-card {
+    padding: 15px;
+    border-bottom: 1px solid #f0f0f0;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+    .pet-card:hover {
+        background: #f8f9fa;
+        transform: translateX(5px);
+    }
+
+    .pet-card.selected {
+        background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+        border-left: 4px solid #2ecc71;
+    }
+
+.pet-info {
+    flex: 1;
+}
+
+.pet-name {
+    font-weight: 700;
+    color: #2c3e50;
+    font-size: 1em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 5px;
+}
+
+    .pet-name i {
+        color: #f39c12;
+    }
+
+.pet-details {
+    font-size: 0.85em;
+    color: #6c757d;
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.pet-badge {
+    background: #ecf0f1;
+    color: #2c3e50;
+    padding: 4px 10px;
+    border-radius: 15px;
+    font-size: 0.7em;
+    font-weight: 600;
+}
+
+/* Estado de carga en resultados */
+.search-loading {
+    padding: 30px;
+    text-align: center;
+    color: #6c757d;
+}
+
+    .search-loading i {
+        font-size: 2em;
+        margin-bottom: 10px;
+        color: var(--arya-blue);
+    }
+
+/* Mensaje sin resultados */
+.no-results {
+    padding: 30px;
+    text-align: center;
+    color: #6c757d;
+}
+
+    .no-results i {
+        font-size: 2em;
+        margin-bottom: 10px;
+        color: #bdc3c7;
+    }

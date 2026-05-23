@@ -1,0 +1,619 @@
+/* --- facturar.css: Estilos específicos para el Módulo de Facturación --- */
+
+/* ==========================================
+   1. LAYOUT PRINCIPAL (GRID)
+   ========================================== */
+.facturar-layout {
+    display: grid;
+    grid-template-columns: 45% 1fr;
+    gap: 30px;
+    align-items: start;
+    margin-top: 20px;
+}
+
+/* ==========================================
+   2. TARJETAS DEL LAYOUT
+   ========================================== */
+
+/* Tarjeta del formulario (izquierda) */
+.form-container-card {
+    padding: 25px;
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    border-top: 5px solid var(--arya-primary);
+    position: sticky;
+    top: 100px;
+    transition: all 0.3s ease;
+}
+
+    .form-container-card:hover {
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        transform: translateY(-2px);
+    }
+
+    .form-container-card h2 {
+        color: var(--arya-dark);
+        border-bottom: 3px solid var(--arya-blue);
+        padding-bottom: 12px;
+        margin-top: 0;
+        margin-bottom: 25px;
+        font-size: 1.4em;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+        .form-container-card h2 i {
+            color: var(--arya-blue);
+        }
+
+/* Tarjeta de lista de facturas (derecha) */
+.appointments-list-card {
+    padding: 25px;
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    border-top: 5px solid var(--arya-secondary);
+    transition: all 0.3s ease;
+}
+
+    .appointments-list-card:hover {
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+    }
+
+    .appointments-list-card h2 {
+        color: var(--arya-dark);
+        border-bottom: 3px solid var(--arya-secondary);
+        padding-bottom: 12px;
+        margin-top: 0;
+        margin-bottom: 25px;
+        font-size: 1.4em;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+        .appointments-list-card h2 i {
+            color: var(--arya-secondary);
+        }
+
+/* ==========================================
+   3. ESTILOS DE FORMULARIOS
+   ========================================== */
+.form-group {
+    margin-bottom: 20px;
+}
+
+    .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 600;
+        color: var(--arya-dark);
+        font-size: 0.9em;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .form-group select,
+    .form-group input {
+        width: 100%;
+        padding: 12px 15px;
+        border: 2px solid #e0e0e0;
+        border-radius: 12px;
+        font-size: 0.95em;
+        transition: all 0.3s ease;
+        background-color: #fff;
+    }
+
+        .form-group select:focus,
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--arya-blue);
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+        }
+
+    /* Select personalizado */
+    .form-group select {
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="%233498db" d="M7 10l5 5 5-5z"/></svg>');
+        background-repeat: no-repeat;
+        background-position: right 15px center;
+        padding-right: 40px;
+        cursor: pointer;
+    }
+
+/* ==========================================
+   4. SECCIÓN DE PRODUCTOS
+   ========================================== */
+.section-title-small {
+    border-bottom: 2px solid var(--arya-accent);
+    font-size: 1.2em;
+    margin-top: 25px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    color: var(--arya-dark);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+    .section-title-small i {
+        color: var(--arya-accent);
+    }
+
+.items-container {
+    margin-bottom: 20px;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 16px;
+    min-height: 100px;
+    border: 2px dashed #e0e0e0;
+}
+
+.invoice-item-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+    padding: 12px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: all 0.2s ease;
+}
+
+    .invoice-item-row:hover {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        transform: translateX(3px);
+    }
+
+.product-group {
+    flex: 2;
+}
+
+    .product-group select {
+        width: 100%;
+        padding: 10px 12px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        background: white;
+    }
+
+.qty-group {
+    flex: 0.5;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+    .qty-group label {
+        font-size: 12px;
+        color: #666;
+        margin: 0;
+    }
+
+.product-qty {
+    width: 70px !important;
+    padding: 10px !important;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.remove-item-btn {
+    width: 38px;
+    height: 38px;
+    border: none;
+    border-radius: 10px;
+    background: #dc3545;
+    color: white;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+    .remove-item-btn:hover {
+        background: #c82333;
+        transform: scale(1.05);
+    }
+
+.btn-add-item {
+    width: 100%;
+    padding: 12px;
+    border-radius: 12px;
+    background: transparent;
+    border: 2px dashed var(--arya-accent);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+    .btn-add-item:hover {
+        background: rgba(142, 68, 173, 0.05);
+        border-color: var(--arya-primary);
+    }
+
+/* ==========================================
+   5. SECCIÓN DE TOTALES
+   ========================================== */
+.total-section {
+    margin-top: 25px;
+    padding: 20px;
+    background: linear-gradient(135deg, #f0f4f8 0%, #e8edf2 100%);
+    border-radius: 16px;
+}
+
+.total-details-container {
+    background: white;
+    border-radius: 12px;
+    padding: 15px;
+}
+
+.total-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    font-size: 14px;
+}
+
+.total-final {
+    border-top: 2px solid #e0e0e0;
+    margin-top: 5px;
+    padding-top: 12px;
+    font-size: 18px;
+}
+
+    .total-final span:last-child {
+        color: var(--arya-secondary);
+        font-size: 20px;
+    }
+
+/* ==========================================
+   6. HISTORIAL DE FACTURAS MODERNO
+   ========================================== */
+.invoice-card {
+    background: white;
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid #e9ecef;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+    .invoice-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 5px;
+        height: 100%;
+        background: linear-gradient(135deg, var(--arya-blue), var(--arya-secondary));
+    }
+
+    .invoice-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+    }
+
+.invoice-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+    .invoice-header h4 {
+        margin: 0;
+        font-size: 1.2em;
+        color: var(--arya-dark);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+        .invoice-header h4 i {
+            color: var(--arya-primary);
+        }
+
+.invoice-date {
+    font-size: 0.85em;
+    color: #7f8c8d;
+    margin-top: 5px;
+}
+
+.invoice-status {
+    padding: 6px 16px;
+    border-radius: 20px;
+    color: white;
+    font-size: 0.8em;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.invoice-body {
+    margin-bottom: 15px;
+}
+
+.invoice-line {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 0;
+    color: #555;
+    font-size: 0.9em;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+    .invoice-line:last-child {
+        border-bottom: none;
+    }
+
+    .invoice-line i {
+        width: 24px;
+        color: var(--arya-blue);
+    }
+
+    .invoice-line strong {
+        color: var(--arya-dark);
+        margin-left: auto;
+    }
+
+/* Productos dentro de factura */
+.invoice-products {
+    margin-top: 12px;
+    padding: 12px;
+    background: #f8f9fa;
+    border-radius: 12px;
+}
+
+    .invoice-products strong {
+        display: block;
+        margin-bottom: 8px;
+        color: var(--arya-dark);
+    }
+
+    .invoice-products ul {
+        margin: 0;
+        padding-left: 20px;
+    }
+
+    .invoice-products li {
+        padding: 4px 0;
+        color: #666;
+        font-size: 0.85em;
+    }
+
+/* Botones de acción en facturas */
+.invoice-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #e9ecef;
+}
+
+    .invoice-actions .button {
+        flex: 1;
+        padding: 10px;
+        border-radius: 10px;
+        font-size: 0.85em;
+        font-weight: 600;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+    }
+
+/* ==========================================
+   7. BOTONES GENERALES
+   ========================================== */
+.button-group {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+    .button-group button {
+        flex: 1;
+        padding: 12px;
+        border-radius: 12px;
+        font-weight: 600;
+    }
+
+.button.primary {
+    background: linear-gradient(135deg, var(--arya-blue) 0%, #2471a3 100%);
+}
+
+.button.secondary {
+    background: linear-gradient(135deg, #95a5a6 0%, #7f8c8d 100%);
+}
+
+.button.danger {
+    background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+}
+
+/* ==========================================
+   8. ESTADOS VACÍOS Y CARGA
+   ========================================== */
+.empty-state {
+    text-align: center;
+    padding: 50px 20px;
+    color: #95a5a6;
+}
+
+    .empty-state i {
+        font-size: 48px;
+        margin-bottom: 15px;
+        color: var(--arya-blue);
+    }
+
+.loading-state {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+    .loading-state i {
+        font-size: 48px;
+        color: var(--arya-blue);
+        margin-bottom: 15px;
+    }
+
+/* ==========================================
+   9. MODALES
+   ========================================== */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    max-width: 500px;
+    width: 90%;
+    animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.modal-content h2 {
+    margin-top: 0;
+    color: var(--arya-dark);
+    border-bottom: 2px solid var(--arya-blue);
+    padding-bottom: 10px;
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 12px;
+    margin-top: 25px;
+}
+
+    .modal-buttons button {
+        flex: 1;
+    }
+
+/* ==========================================
+   10. RESPONSIVE
+   ========================================== */
+@media (max-width: 1000px) {
+    .facturar-layout {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .form-container-card {
+        position: static;
+    }
+}
+
+@media (max-width: 768px) {
+    .invoice-item-row {
+        flex-wrap: wrap;
+    }
+
+    .product-group {
+        flex: 100%;
+    }
+
+    .qty-group {
+        flex: 1;
+    }
+
+    .invoice-header {
+        flex-direction: column;
+    }
+
+    .invoice-actions {
+        flex-direction: column;
+    }
+
+    .modal-content {
+        padding: 20px;
+        margin: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .form-container-card,
+    .appointments-list-card {
+        padding: 15px;
+    }
+
+    .total-final span:last-child {
+        font-size: 16px;
+    }
+}
+
+/* Animaciones */
+.fade-in {
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Animaciones para toasts */
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOutRight {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}

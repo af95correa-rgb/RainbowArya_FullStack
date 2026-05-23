@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARYA - Calificaciones</title>
+    <link rel="stylesheet" href="../CSS/styles.css">
+    <link rel="stylesheet" href="../CSS/calificaciones.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <header class="app-header">
+        <div class="container header-container" style="display: flex; justify-content: space-between; align-items: center;">
+            <div class="logo-container" style="display: flex; align-items: center; gap: 15px;">
+                <img src="../assets/RAINBOW_ARYA_LOGO.png" alt="Logo ARYA" style="height: 50px;">
+                <h1 class="rainbow-text" style="margin: 0; font-size: 1.5rem;">Veterinaria Rainbow ARYA</h1>
+            </div>
+            <nav class="nav-links">
+                <button class="button" onclick="location.href='../index.html'" style="background: linear-gradient(135deg, #8e44ad, #6c3483); border: none; color: white; padding: 10px 24px; border-radius: 25px; cursor: pointer;">
+                    <i class="fas fa-home"></i> Volver al Dashboard
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <h1 class="rainbow-text"><i class="fas fa-star"></i> Calificaciones de Usuarios</h1>
+            <p class="intro-text">Califica el servicio recibido y consulta tus calificaciones anteriores.</p>
+
+            <div class="calificaciones-container" id="calificaciones-container">
+                <!-- El contenido se carga dinámicamente desde JS -->
+            </div>
+        </div>
+    </main>
+
+    <footer class="app-footer">
+        <div class="container">
+            <p>&copy; 2025 Veterinaria Rainbow ARYA | Sistema de Gestión Interna</p>
+        </div>
+    </footer>
+
+    <div id="system-modal-backdrop" class="modal-overlay">
+        <div id="system-modal" class="modal-content">
+            <h3 id="modal-title">Título</h3>
+            <p id="modal-message">Mensaje</p>
+            <div id="modal-actions" class="modal-actions"></div>
+        </div>
+    </div>
+
+    <script src="../JS/api.js"></script>
+    <script src="../JS/calificaciones.js"></script>
+</body>
+</html>
+
