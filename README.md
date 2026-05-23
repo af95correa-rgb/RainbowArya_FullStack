@@ -6,9 +6,7 @@ Sistema web full-stack para la gestión integral de una clínica veterinaria.
 
 ## 👥 Integrantes del Grupo
 
-- [Nombre Integrante 1]
-- [Nombre Integrante 2]
-- [Nombre Integrante 3]
+ANDRES FELIPE CORREA RAMIREZ
 
 ---
 
